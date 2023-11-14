@@ -1,8 +1,11 @@
-import "./bistroBoss.css";
+import img from "../../../assets/home/chef-service.jpg";
 
 const BistroBoss = () => {
   return (
-    <div className="mb-20 h-[576px] boss bg-cover bg-center bg-no-repeat flex items-center">
+    <div
+      style={{ backgroundImage: `url("${img}")` }}
+      className="mb-20 h-[576px] bg-cover bg-center bg-no-repeat flex items-center"
+    >
       <div className="text-center bg-white text-black h-[60%]  w-[75%] md:w-[65%] mx-auto flex flex-col justify-center md:p-20">
         <h2 className="md:text-5xl text-2xl uppercase">Bistro Boss</h2>
         <p className="mt-6">

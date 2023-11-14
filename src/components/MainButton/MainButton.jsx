@@ -14,7 +14,7 @@ const MainButton = ({ name, mainColor, secondaryColor, tertiaryColor }) => {
   };
 
   return (
-    <div>
+    <div className="flex justify-center mt-10 font-semibold">
       <button
         className="uppercase"
         style={buttonStyle}

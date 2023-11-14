@@ -35,12 +35,12 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/statistics"
+          to="/menu"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
           }
         >
-          Our Menu
+          OUR MENU
         </NavLink>
       </li>
       <li>

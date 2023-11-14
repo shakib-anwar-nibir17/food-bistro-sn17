@@ -28,7 +28,7 @@ const FromOurMenu = () => {
           <MenuCard key={item._id} item={item}></MenuCard>
         ))}
       </div>
-      <div className="flex justify-center mt-10 font-semibold">
+      <div className="">
         <MainButton
           name={"View Full  Menu"}
           mainColor={"#1F2937"}

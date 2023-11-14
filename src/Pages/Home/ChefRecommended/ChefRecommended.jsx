@@ -19,7 +19,7 @@ const ChefRecommended = () => {
             <p className="w-1/2 mx-auto">
               Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
             </p>
-            <div className="card-actions justify-center pt-4">
+            <div className="card-actions justify-center">
               <MainButton
                 name="add to cart"
                 mainColor="#BB8506"
@@ -38,7 +38,7 @@ const ChefRecommended = () => {
             <p className="w-1/2 mx-auto">
               Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
             </p>
-            <div className="card-actions justify-center pt-4 font-semibold">
+            <div className="card-actions justify-center">
               <MainButton
                 name="add to cart"
                 mainColor="#BB8506"
@@ -57,7 +57,7 @@ const ChefRecommended = () => {
             <p className="w-1/2 mx-auto">
               Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.
             </p>
-            <div className="card-actions justify-center pt-4">
+            <div className="card-actions justify-center">
               <MainButton
                 name="add to cart"
                 mainColor="#BB8506"
