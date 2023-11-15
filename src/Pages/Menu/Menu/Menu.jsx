@@ -1,5 +1,5 @@
-import SectionCover from "../Shared/SectionCover/SectionCover";
-import menuImage from "../../assets/menu/banner3.jpg";
+import SectionCover from "../../Shared/SectionCover/SectionCover";
+import menuImage from "../../../assets/menu/banner3.jpg";
 import { Helmet } from "react-helmet-async";
 
 const Menu = () => {
