@@ -1,6 +1,4 @@
-// import { useEffect, useState } from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
-// import axios from "axios";
 import MenuCard from "../../Shared/MenuCard/MenuCard";
 import MainButton from "../../../components/MainButton/MainButton";
 import useMenu from "../../../Hooks/useMenu";

@@ -1,6 +1,7 @@
 import SectionCover from "../../Shared/SectionCover/SectionCover";
 import menuImage from "../../../assets/menu/banner3.jpg";
 import { Helmet } from "react-helmet-async";
+import MenuCategory from "../MenuCategory/MenuCategory";
 
 const Menu = () => {
   return (
@@ -14,6 +15,7 @@ const Menu = () => {
         img={menuImage}
         phrase={"WOULD YOU LIKE TO TRY A DISH?"}
       ></SectionCover>
+      <MenuCategory></MenuCategory>
     </div>
   );
 };

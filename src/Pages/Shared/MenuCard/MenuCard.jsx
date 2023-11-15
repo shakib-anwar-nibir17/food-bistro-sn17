@@ -4,10 +4,10 @@ const MenuCard = ({ item }) => {
   const { name, recipe, price, image } = item;
   return (
     <div className="flex space-x-4">
-      <div>
+      <div className="w-[120px] h-[104px]">
         <img
           style={{ borderRadius: "0px 200px 200px 200px" }}
-          className="w-[120px]"
+          className="w-full"
           src={image}
           alt=""
         />

@@ -14,7 +14,7 @@ const SectionCover = ({ heading, img, fontSize, phrase }) => {
           >
             {heading}
           </h3>
-          <p className="font-medium">{phrase}</p>
+          <p className="font-medium w-3/4 mx-auto">{phrase}</p>
         </div>
       </div>
     </div>
