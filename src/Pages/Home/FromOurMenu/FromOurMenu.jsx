@@ -5,10 +5,8 @@ import useMenu from "../../../Hooks/useMenu";
 
 const FromOurMenu = () => {
   const [menu] = useMenu();
-  console.log(menu);
 
   const popularItem = menu.filter((item) => item.category === "popular");
-  console.log(popularItem);
 
   return (
     <section className="mb-20">

@@ -1,6 +1,23 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import defaultUserPic from "../../../assets/others/profile.png";
+import { AuthContext } from "../../../Providers/AuthProviders";
+import { useContext } from "react";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          title: "Congrats",
+          text: "Log out Successful",
+          icon: "success",
+        });
+      })
+      .catch((error) => console.log(error));
+  };
   const navLinks = (
     <>
       <li>
@@ -66,8 +83,8 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar container text-white lg:fixed lg:z-10 lg:bg-opacity-50 bg-[#151515]">
-      <div className="navbar-start">
+    <div className="navbar container justify-between text-white lg:fixed lg:z-10 lg:bg-opacity-50 bg-[#151515]">
+      <div>
         <div className="dropdown">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
             <svg
@@ -94,8 +111,43 @@ const Navbar = () => {
         </div>
         <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
       </div>
-      <div className="navbar-end hidden lg:flex">
+      <div className="hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
+        <div>
+          {user?.email ? (
+            <p>
+              <button
+                onClick={handleLogOut}
+                className=" text-[#EEFF25] underline mr-4"
+              >
+                Sign Out
+              </button>
+            </p>
+          ) : (
+            <p>
+              <Link to="/login">
+                <button className=" text-[#EEFF25] underline mr-4">
+                  Sign In
+                </button>
+              </Link>
+            </p>
+          )}
+        </div>
+        <div className="h-[50px] w-[55px] rounded-full bg-blue-400">
+          {user?.photoURL ? (
+            <img
+              className="h-full w-full rounded-full"
+              src={user.photoURL}
+              alt=""
+            />
+          ) : (
+            <img
+              className="h-full w-full rounded-full"
+              src={defaultUserPic}
+              alt=""
+            />
+          )}
+        </div>
       </div>
     </div>
   );
