@@ -8,15 +8,20 @@ import "./shop.css";
 import useMenu from "../../../Hooks/useMenu";
 
 import OrderTab from "../OrderTab/OrderTab";
+import { useParams } from "react-router-dom";
 
 const Shop = () => {
+  const categories = ["pizza", "salad", "soup", "dessert", "drinks"];
+  const { category } = useParams();
+  console.log(category);
+  const initialIndex = categories.indexOf(category);
+  const [tabIndex, setTabIndex] = useState(initialIndex);
   const [menu] = useMenu();
   const drinks = menu.filter((item) => item.category === "drinks");
   const soup = menu.filter((item) => item.category === "soup");
   const salad = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
   const dessert = menu.filter((item) => item.category === "dessert");
-  const [tabIndex, setTabIndex] = useState(0);
 
   return (
     <div>
@@ -34,7 +39,7 @@ const Shop = () => {
           <div className="flex justify-center mt-10">
             <Tab>PIZZA</Tab>
             <Tab>SALADS</Tab>
-            <Tab>SOUPS</Tab>
+            <Tab>SOUP</Tab>
             <Tab>DESSERT</Tab>
             <Tab>DRINKS</Tab>
           </div>

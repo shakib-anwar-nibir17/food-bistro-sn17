@@ -45,12 +45,22 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/shop"
+          to="/shop/pizza"
           className={({ isActive, isPending }) =>
             isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
           }
         >
-          Our Shop
+          OUR SHOP
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/login"
+          className={({ isActive, isPending }) =>
+            isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
+          }
+        >
+          LOGIN
         </NavLink>
       </li>
     </>

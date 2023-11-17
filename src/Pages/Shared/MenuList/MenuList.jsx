@@ -21,7 +21,7 @@ const MenuList = ({ items, title, img, phrase }) => {
         ))}
       </div>
       <div className="">
-        <Link to="/shop">
+        <Link to={`/shop/${title}`}>
           <MainButton
             name={"ORDER YOUR FAVORITE FOOD"}
             mainColor={"#1F2937"}
