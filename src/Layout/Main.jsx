@@ -4,8 +4,9 @@ import Navbar from "../Pages/Shared/Navbar/Navbar";
 
 const Main = () => {
   const location = useLocation();
-  console.log(location);
-  const noNavAndFooter = location.pathname.includes("login");
+  const noNavAndFooter =
+    location.pathname.includes("login") ||
+    location.pathname.includes("register");
   return (
     <div className="container mx-auto ">
       {noNavAndFooter || <Navbar></Navbar>}

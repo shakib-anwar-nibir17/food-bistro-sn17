@@ -8,6 +8,7 @@ import {
   validateCaptcha,
 } from "react-simple-captcha";
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -50,6 +51,7 @@ const Login = () => {
         </div>
         <div className="w-1/2">
           <form onSubmit={handleLogIn} className="w-3/4">
+            <h2 className="text-4xl font-bold text-center mb-10">Login</h2>
             <div className="form-control">
               <label className="label">
                 <span className="label-text font-bold">Email</span>
@@ -103,6 +105,14 @@ const Login = () => {
               />
             </div>
           </form>
+          <div className="w-3/4">
+            <p className="text-[#D1A054] mt-4 text-center ">
+              New here?
+              <Link to="/register">
+                <span className="font-bold ml-2">Create a New Account</span>
+              </Link>
+            </p>
+          </div>
         </div>
       </div>
     </div>
@@ -110,4 +120,3 @@ const Login = () => {
 };
 
 export default Login;
-<h2>Please Log in !!!</h2>;
