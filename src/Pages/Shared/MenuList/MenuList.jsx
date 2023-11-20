@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const MenuList = ({ items, title, img, phrase }) => {
   return (
     <section className="mb-20">
-      {title && (
+      {img && (
         <SectionCover
           heading={title}
           img={img}

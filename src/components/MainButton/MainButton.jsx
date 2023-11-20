@@ -1,7 +1,13 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-const MainButton = ({ name, mainColor, secondaryColor, tertiaryColor }) => {
+const MainButton = ({
+  name,
+  mainColor,
+  secondaryColor,
+  tertiaryColor,
+  ...props
+}) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const buttonStyle = {
@@ -16,6 +22,8 @@ const MainButton = ({ name, mainColor, secondaryColor, tertiaryColor }) => {
   return (
     <div className="flex justify-center mt-10 font-semibold">
       <button
+        // onClick={clickFunction}
+        {...props}
         className="uppercase"
         style={buttonStyle}
         onMouseEnter={() => setIsHovered(true)}
@@ -32,6 +40,7 @@ MainButton.propTypes = {
   mainColor: PropTypes.string,
   secondaryColor: PropTypes.string,
   tertiaryColor: PropTypes.string,
+  clickFunction: PropTypes.func,
 };
 
 export default MainButton;

@@ -1,11 +1,15 @@
 import { Link, NavLink } from "react-router-dom";
+import logo from "../../../assets/logo.png";
 import defaultUserPic from "../../../assets/others/profile.png";
 import { AuthContext } from "../../../Providers/AuthProviders";
 import { useContext } from "react";
 import Swal from "sweetalert2";
+import { BsCart4 } from "react-icons/bs";
+import useCart from "../../../Hooks/useCart";
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logOut()
@@ -23,8 +27,8 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
+          className={({ isActive }) =>
+            isActive ? "text-[#EEFF25] underline" : ""
           }
         >
           HOME
@@ -33,8 +37,8 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/donation"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
+          className={({ isActive }) =>
+            isActive ? "text-[#EEFF25] underline" : ""
           }
         >
           CONTACT US
@@ -43,8 +47,8 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/statistics"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
+          className={({ isActive }) =>
+            isActive ? "text-[#EEFF25] underline" : ""
           }
         >
           DASHBOARD
@@ -53,8 +57,8 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/menu"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
+          className={({ isActive }) =>
+            isActive ? "text-[#EEFF25] underline" : ""
           }
         >
           OUR MENU
@@ -63,8 +67,8 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/shop/pizza"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
+          className={({ isActive }) =>
+            isActive ? "text-[#EEFF25] underline" : ""
           }
         >
           OUR SHOP
@@ -73,13 +77,52 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/login"
-          className={({ isActive, isPending }) =>
-            isPending ? "pending" : isActive ? "text-[#EEFF25] underline" : ""
+          className={({ isActive }) =>
+            isActive ? "text-[#EEFF25] underline" : ""
           }
         >
           LOGIN
         </NavLink>
       </li>
+      <div>
+        <button className="flex justify-center items-center">
+          <BsCart4 className="text-3xl text-[#EEFF25]"></BsCart4>
+          <div className="badge">+{cart.length}</div>
+        </button>
+      </div>
+      <div>
+        {user?.email ? (
+          <p>
+            <button
+              onClick={handleLogOut}
+              className=" text-[#EEFF25] underline"
+            >
+              Sign Out
+            </button>
+          </p>
+        ) : (
+          <p>
+            <Link to="/login">
+              <button className=" text-[#EEFF25] underline">Sign In</button>
+            </Link>
+          </p>
+        )}
+      </div>
+      <div className="h-[50px] w-[55px] rounded-full bg-blue-400">
+        {user?.photoURL ? (
+          <img
+            className="h-full w-full rounded-full"
+            src={user.photoURL}
+            alt=""
+          />
+        ) : (
+          <img
+            className="h-full w-full rounded-full"
+            src={defaultUserPic}
+            alt=""
+          />
+        )}
+      </div>
     </>
   );
   return (
@@ -104,50 +147,18 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52"
+            className="menu menu-sm space-y-2 dropdown-content mt-3 z-[1] p-2 shadow bg-black rounded-box w-52"
           >
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+        <div className="btn btn-ghost text-left mb-2 normal-case text-xl flex items-end">
+          <img className="h-[60px] w-[50px] hidden" src={logo} alt="" />
+          BISTRO BOSS <br /> Restaurant
+        </div>
       </div>
       <div className="hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navLinks}</ul>
-        <div>
-          {user?.email ? (
-            <p>
-              <button
-                onClick={handleLogOut}
-                className=" text-[#EEFF25] underline mr-4"
-              >
-                Sign Out
-              </button>
-            </p>
-          ) : (
-            <p>
-              <Link to="/login">
-                <button className=" text-[#EEFF25] underline mr-4">
-                  Sign In
-                </button>
-              </Link>
-            </p>
-          )}
-        </div>
-        <div className="h-[50px] w-[55px] rounded-full bg-blue-400">
-          {user?.photoURL ? (
-            <img
-              className="h-full w-full rounded-full"
-              src={user.photoURL}
-              alt=""
-            />
-          ) : (
-            <img
-              className="h-full w-full rounded-full"
-              src={defaultUserPic}
-              alt=""
-            />
-          )}
-        </div>
+        <ul className="flex items-center gap-4 px-1">{navLinks}</ul>
       </div>
     </div>
   );
