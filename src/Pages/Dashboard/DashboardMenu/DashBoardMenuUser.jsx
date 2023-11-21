@@ -1,12 +1,16 @@
-import { NavLink } from "react-router-dom";
-import { FaBook, FaEnvelope, FaHome, FaListAlt, FaUsers } from "react-icons/fa";
 import {
-  GiForkKnifeSpoon,
-  GiHamburgerMenu,
-  GiShoppingBag,
-} from "react-icons/gi";
+  FaCalendarAlt,
+  FaHome,
+  FaShoppingCart,
+  FaWallet,
+  FaEnvelope,
+  FaCalendarCheck,
+} from "react-icons/fa";
+import { GiHamburgerMenu, GiShoppingBag } from "react-icons/gi";
+import { VscFeedback } from "react-icons/vsc";
+import { NavLink } from "react-router-dom";
 
-const DashboardMenu = () => {
+const DashBoardMenuUser = () => {
   const navLinks = (
     <>
       <li>
@@ -18,7 +22,7 @@ const DashboardMenu = () => {
             <span>
               <FaHome className="text-2xl" />
             </span>
-            ADMIN HOME
+            USER HOME
           </p>
         </NavLink>
       </li>
@@ -29,9 +33,9 @@ const DashboardMenu = () => {
         >
           <p className="flex items-center gap-1">
             <span>
-              <GiForkKnifeSpoon className="text-2xl" />
+              <FaCalendarAlt className="text-2xl" />
             </span>
-            ADD ITEMS
+            RESERVATION
           </p>
         </NavLink>
       </li>
@@ -42,22 +46,22 @@ const DashboardMenu = () => {
         >
           <p className="flex items-center gap-1">
             <span>
-              <FaListAlt className="text-2xl" />
+              <FaWallet className="text-2xl" />
             </span>
-            MANAGE ITEMS
+            PAYMENT HISTORY
           </p>
         </NavLink>
       </li>
       <li>
         <NavLink
-          to="/shop/pizza"
+          to="/dashboard/cart"
           className={({ isActive }) => (isActive ? "text-white" : "")}
         >
           <p className="flex items-center gap-1">
             <span>
-              <FaBook className="text-2xl" />
+              <FaShoppingCart className="text-2xl" />
             </span>
-            MANAGE BOOKINGS
+            MY CART
           </p>
         </NavLink>
       </li>
@@ -68,9 +72,22 @@ const DashboardMenu = () => {
         >
           <p className="flex items-center gap-1">
             <span>
-              <FaUsers className="text-2xl" />
+              <VscFeedback className="text-2xl" />
             </span>
-            ALL USERS
+            ADD REVIEW
+          </p>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/donation"
+          className={({ isActive }) => (isActive ? "text-white" : "")}
+        >
+          <p className="flex items-center gap-1">
+            <span>
+              <FaCalendarCheck className="text-2xl" />
+            </span>
+            MY BOOKING
           </p>
         </NavLink>
       </li>
@@ -136,9 +153,9 @@ const DashboardMenu = () => {
   );
   return (
     <div>
-      <ul className="font-medium text-xl space-y-4">{navLinks}</ul>
+      <ul className="font-medium text-xl space-y-6">{navLinks}</ul>
     </div>
   );
 };
 
-export default DashboardMenu;
+export default DashBoardMenuUser;

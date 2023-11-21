@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import DashboardMenu from "../Pages/Dashboard/DashboardMenu/DashboardMenu";
+import DashBoardMenuUser from "../Pages/Dashboard/DashboardMenu/DashBoardMenuUser";
 
 const Dashboard = () => {
   return (
@@ -9,9 +9,9 @@ const Dashboard = () => {
           <h1 className="font-extrabold">BISTRO BOSS</h1>
           <h3 className="font-semibold mt-2">Restaurant</h3>
         </div>
-        <DashboardMenu></DashboardMenu>
+        <DashBoardMenuUser></DashBoardMenuUser>
       </div>
-      <div className="flex-1 bg-blue-200">
+      <div className="flex-1 bg-[#F6F6F6]">
         <Outlet></Outlet>
       </div>
     </div>
