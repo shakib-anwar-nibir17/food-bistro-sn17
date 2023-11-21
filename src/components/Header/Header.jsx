@@ -12,7 +12,7 @@ const Header = ({ main, value }) => {
 
 Header.propTypes = {
   main: PropTypes.string,
-  value: PropTypes.string,
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };
 
 export default Header;

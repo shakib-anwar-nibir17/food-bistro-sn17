@@ -46,7 +46,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/dashboard"
+          to="dashboard/user_home"
           className={({ isActive }) =>
             isActive ? "text-[#EEFF25] underline" : ""
           }

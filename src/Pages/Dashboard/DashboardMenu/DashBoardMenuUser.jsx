@@ -15,7 +15,7 @@ const DashBoardMenuUser = () => {
     <>
       <li>
         <NavLink
-          to="/dashboard"
+          to="/dashboard/user_home"
           className={({ isActive }) => (isActive ? "text-white" : "")}
         >
           <p className="flex items-center gap-1">

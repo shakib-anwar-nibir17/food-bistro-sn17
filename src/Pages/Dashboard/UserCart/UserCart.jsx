@@ -2,10 +2,39 @@ import { Helmet } from "react-helmet-async";
 import Header from "../../../components/Header/Header";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useCart from "../../../Hooks/useCart";
+import { FaTrashAlt } from "react-icons/fa";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const UserCart = () => {
-  const [cart] = useCart();
+  const axiosSecure = useAxiosSecure();
+  const [cart, refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  const handleDelete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/carts/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+          refetch();
+        });
+      }
+    });
+  };
   return (
     <div>
       <Helmet>
@@ -25,13 +54,13 @@ const UserCart = () => {
         <div className="overflow-x-auto mt-5">
           <table className="table">
             {/* head */}
-            <thead className="bg-[#D1A054] text-white">
+            <thead className=" text-white">
               <tr>
-                <th></th>
-                <th>ITEM IMAGE</th>
-                <th>ITEM NAME</th>
-                <th>PRICE</th>
-                <th>Action</th>
+                <th className="rounded-tl-xl py-4 bg-[#D1A054]"></th>
+                <th className="py-4 bg-[#D1A054]">ITEM IMAGE</th>
+                <th className="py-4 bg-[#D1A054]">ITEM NAME</th>
+                <th className="py-4 bg-[#D1A054]">PRICE</th>
+                <th className="rounded-tr-xl py-4 bg-[#D1A054]">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -51,7 +80,12 @@ const UserCart = () => {
                   <td>{item.name}</td>
                   <td>${item.price}</td>
                   <th>
-                    <button className="btn btn-ghost btn-xs">details</button>
+                    <button
+                      onClick={() => handleDelete(item._id)}
+                      className="btn bg-[#B91C1C] "
+                    >
+                      <FaTrashAlt className="text-white"></FaTrashAlt>
+                    </button>
                   </th>
                 </tr>
               ))}
