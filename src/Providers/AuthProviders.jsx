@@ -49,9 +49,12 @@ const AuthProviders = ({ children }) => {
     };
   }, []);
 
+  const isAdmin = true;
+
   const authInfo = {
     user,
     loading,
+    isAdmin,
     googleSignIn,
     createUser,
     SignIn,

@@ -8,7 +8,7 @@ import { BsCart4 } from "react-icons/bs";
 import useCart from "../../../Hooks/useCart";
 
 const Navbar = () => {
-  const { user, logOut } = useContext(AuthContext);
+  const { user, logOut, isAdmin } = useContext(AuthContext);
   const [cart] = useCart();
 
   const handleLogOut = () => {
@@ -46,7 +46,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="dashboard/user_home"
+          to={isAdmin ? "dashboard/admin" : "dashboard/user_home"}
           className={({ isActive }) =>
             isActive ? "text-[#EEFF25] underline" : ""
           }

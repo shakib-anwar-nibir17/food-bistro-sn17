@@ -1,15 +1,27 @@
 import { useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import { FaFacebook, FaGithub, FaGoogle } from "react-icons/fa";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 
 const SocialSingUp = () => {
   const { googleSignIn } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
 
   const handleGoogleSignIn = () => {
     googleSignIn()
       .then((result) => {
-        console.log(result);
+        const newUser = result.user;
+        const userInfo = {
+          email: newUser.email,
+          name: newUser.displayName,
+        };
+        axiosPublic
+          .post("/users", userInfo)
+          .then((res) => {
+            console.log(res.data);
+          })
+          .catch((error) => console.log(error));
         navigate("/");
       })
       .catch((error) => console.log(error));

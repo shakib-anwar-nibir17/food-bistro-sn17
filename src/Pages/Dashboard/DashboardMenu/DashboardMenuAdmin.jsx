@@ -1,17 +1,14 @@
 import { NavLink } from "react-router-dom";
-import { FaBook, FaEnvelope, FaHome, FaListAlt, FaUsers } from "react-icons/fa";
-import {
-  GiForkKnifeSpoon,
-  GiHamburgerMenu,
-  GiShoppingBag,
-} from "react-icons/gi";
+import { FaBook, FaHome, FaListAlt, FaUsers } from "react-icons/fa";
+import { GiForkKnifeSpoon } from "react-icons/gi";
+import SharedNavLinks from "../../Shared/SharedNavLinks/SharedNavLinks";
 
 const DashboardMenuAdmin = () => {
   const navLinks = (
     <>
       <li>
         <NavLink
-          to="/dashboard"
+          to="/dashboard/admin"
           className={({ isActive }) => (isActive ? "text-white" : "")}
         >
           <p className="flex items-center gap-1">
@@ -63,7 +60,7 @@ const DashboardMenuAdmin = () => {
       </li>
       <li>
         <NavLink
-          to="/donation"
+          to="/dashboard/all_user"
           className={({ isActive }) => (isActive ? "text-white" : "")}
         >
           <p className="flex items-center gap-1">
@@ -78,60 +75,7 @@ const DashboardMenuAdmin = () => {
       <div className="pt-2 pb-6">
         <hr className="border-2 border-white" />
       </div>
-      <li>
-        <NavLink
-          to="/"
-          className={({ isActive }) =>
-            isActive ? "text-[#EEFF25] underline" : ""
-          }
-        >
-          <p className="flex items-center gap-1">
-            <span>
-              <FaHome className="text-2xl" />
-            </span>
-            HOME
-          </p>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/menu"
-          className={({ isActive }) => (isActive ? "text-white" : "")}
-        >
-          <p className="flex items-center gap-1">
-            <span>
-              <GiHamburgerMenu className="text-2xl" />
-            </span>
-            MENU
-          </p>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/shop/pizza"
-          className={({ isActive }) => (isActive ? "text-white" : "")}
-        >
-          <p className="flex items-center gap-1">
-            <span>
-              <GiShoppingBag className="text-2xl" />
-            </span>
-            SHOP
-          </p>
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/contact"
-          className={({ isActive }) => (isActive ? "text-white" : "")}
-        >
-          <p className="flex items-center gap-1">
-            <span>
-              <FaEnvelope className="text-2xl" />
-            </span>
-            CONTACT
-          </p>
-        </NavLink>
-      </li>
+      <SharedNavLinks></SharedNavLinks>
     </>
   );
   return (
