@@ -5,12 +5,16 @@ import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../Providers/AuthProviders";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import SocialSingUp from "../../components/SocialSignUp/SocialSingUp";
 
 const Register = () => {
+  const axiosPublic = useAxiosPublic();
   const navigate = useNavigate();
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm();
 
@@ -19,8 +23,17 @@ const Register = () => {
   const onSubmit = (data) => {
     console.log(data);
     createUser(data.email, data.password).then((result) => {
-      const loggedUser = result.user;
-      console.log(loggedUser);
+      console.log(result.user);
+      const userInfo = {
+        name: data.name,
+        email: data.email,
+      };
+      axiosPublic.post("/users", userInfo).then((res) => {
+        console.log(res.data);
+        if (res.data.insertedId > 0) {
+          reset();
+        }
+      });
       navigate("/");
     });
   };
@@ -41,7 +54,7 @@ const Register = () => {
         <div>
           <img src={logInImage} alt="" />
         </div>
-        <div className="w-1/2 px-8n ">
+        <div className="w-1/2 px-8">
           <form
             onSubmit={handleSubmit(onSubmit)}
             className="w-3/4 mx-auto mr-0"
@@ -103,7 +116,7 @@ const Register = () => {
               <input
                 className="btn bg-[#D1A054B2] text-white"
                 type="submit"
-                value="Login"
+                value="Sign Up"
               />
             </div>
             <p className="text-[#D1A054] mt-4 text-center ">
@@ -113,6 +126,9 @@ const Register = () => {
               </Link>
             </p>
           </form>
+          <div className="flex justify-center w-3/4 mx-auto mr-0 mt-6">
+            <SocialSingUp></SocialSingUp>
+          </div>
         </div>
       </div>
     </div>

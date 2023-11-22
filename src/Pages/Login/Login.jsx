@@ -11,6 +11,7 @@ import { useContext, useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Providers/AuthProviders";
 import Swal from "sweetalert2";
+import SocialSingUp from "../../components/SocialSignUp/SocialSingUp";
 
 const Login = () => {
   const [disabled, setDisabled] = useState(true);
@@ -122,6 +123,9 @@ const Login = () => {
                 <span className="font-bold ml-2">Create a New Account</span>
               </Link>
             </p>
+          </div>
+          <div className="mt-6 w-3/4 flex justify-center">
+            <SocialSingUp></SocialSingUp>
           </div>
         </div>
       </div>

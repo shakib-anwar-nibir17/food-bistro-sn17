@@ -30,8 +30,8 @@ const UserCart = () => {
               icon: "success",
             });
           }
-          refetch();
         });
+        refetch();
       }
     });
   };

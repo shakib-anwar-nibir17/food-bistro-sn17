@@ -85,10 +85,12 @@ const Navbar = () => {
         </NavLink>
       </li>
       <div>
-        <button className="flex justify-center items-center">
-          <BsCart4 className="text-3xl text-[#EEFF25]"></BsCart4>
-          <div className="badge">+{cart.length}</div>
-        </button>
+        <Link to="/dashboard/cart">
+          <button className="flex justify-center items-center">
+            <BsCart4 className="text-3xl text-[#EEFF25]"></BsCart4>
+            <div className="badge">+{cart.length}</div>
+          </button>
+        </Link>
       </div>
       <div>
         {user?.email ? (
