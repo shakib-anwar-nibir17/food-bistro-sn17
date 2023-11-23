@@ -5,9 +5,11 @@ import Swal from "sweetalert2";
 import { BsCart4 } from "react-icons/bs";
 import useCart from "../../../Hooks/useCart";
 import useAuth from "../../../Hooks/useAuth";
+import useAdmin from "../../../Hooks/useAdmin";
 
 const Navbar = () => {
-  const { user, logOut, isAdmin } = useAuth();
+  const { user, logOut } = useAuth();
+  const [isAdmin] = useAdmin();
   const [cart] = useCart();
 
   const handleLogOut = () => {

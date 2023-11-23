@@ -1,11 +1,10 @@
 import { Outlet } from "react-router-dom";
 import DashBoardMenuUser from "../Pages/Dashboard/DashboardMenu/DashBoardMenuUser";
 import DashboardMenuAdmin from "../Pages/Dashboard/DashboardMenu/DashBoardMenuAdmin";
-import { useContext } from "react";
-import { AuthContext } from "../Providers/AuthProviders";
+import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
-  const { isAdmin } = useContext(AuthContext);
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       <div className="w-[336px] lg:pl-16 pr-4 bg-[#D1A054] min-h-screen">

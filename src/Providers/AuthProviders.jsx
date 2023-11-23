@@ -13,12 +13,12 @@ import {
 import app from "../Firebase/firebase.config";
 import useAxiosPublic from "../Hooks/useAxiosPublic";
 
-export const AuthContext = createContext(null);
+export const AuthContext = createContext();
 const auth = getAuth(app);
 
 const AuthProviders = ({ children }) => {
   const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const axiosPublic = useAxiosPublic();
 
   const googleProvider = new GoogleAuthProvider();
@@ -37,7 +37,6 @@ const AuthProviders = ({ children }) => {
     return signInWithPopup(auth, googleProvider);
   };
   const logOut = () => {
-    setLoading(true);
     return signOut(auth);
   };
 
@@ -50,27 +49,25 @@ const AuthProviders = ({ children }) => {
         const userInfo = { email: currentUser.email };
         axiosPublic.post("/jwt", userInfo).then((res) => {
           console.log(res.data);
-          if (res.data.token) {
-            localStorage.setItem("access-token", res.data.token);
+          if (res.data) {
+            localStorage.setItem("access-token", res?.data?.token);
+            setLoading(false);
           }
         });
       } else {
         // TODO: remove token (if token stored in the client side: Local storage, caching, in memory)
         localStorage.removeItem("access-token");
+        setLoading(false);
       }
-      setLoading(false);
     });
     return () => {
-      return unsubscribe;
+      return unsubscribe();
     };
   }, [axiosPublic]);
-
-  const isAdmin = true;
 
   const authInfo = {
     user,
     loading,
-    isAdmin,
     googleSignIn,
     createUser,
     SignIn,
