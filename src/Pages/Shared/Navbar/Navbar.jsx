@@ -1,14 +1,13 @@
 import { Link, NavLink } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import defaultUserPic from "../../../assets/others/profile.png";
-import { AuthContext } from "../../../Providers/AuthProviders";
-import { useContext } from "react";
 import Swal from "sweetalert2";
 import { BsCart4 } from "react-icons/bs";
 import useCart from "../../../Hooks/useCart";
+import useAuth from "../../../Hooks/useAuth";
 
 const Navbar = () => {
-  const { user, logOut, isAdmin } = useContext(AuthContext);
+  const { user, logOut, isAdmin } = useAuth();
   const [cart] = useCart();
 
   const handleLogOut = () => {
