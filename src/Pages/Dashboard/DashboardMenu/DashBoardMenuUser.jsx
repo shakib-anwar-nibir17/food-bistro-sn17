@@ -6,6 +6,7 @@ import {
   FaCalendarCheck,
 } from "react-icons/fa";
 import { VscFeedback } from "react-icons/vsc";
+import { SiCashapp } from "react-icons/si";
 import { NavLink } from "react-router-dom";
 import SharedNavLinks from "../../Shared/SharedNavLinks/SharedNavLinks";
 
@@ -40,7 +41,20 @@ const DashBoardMenuUser = () => {
       </li>
       <li>
         <NavLink
-          to="/menu"
+          to="/dashboard/payment"
+          className={({ isActive }) => (isActive ? "text-white" : "")}
+        >
+          <p className="flex items-center gap-1">
+            <span>
+              <SiCashapp className="text-2xl" />
+            </span>
+            PAYMENT
+          </p>
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          to="/dashboard/payment-history"
           className={({ isActive }) => (isActive ? "text-white" : "")}
         >
           <p className="flex items-center gap-1">

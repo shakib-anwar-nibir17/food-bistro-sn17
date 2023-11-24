@@ -5,11 +5,13 @@ import useCart from "../../../Hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 const UserCart = () => {
   const axiosSecure = useAxiosSecure();
   const [cart, refetch] = useCart();
   const totalPrice = cart.reduce((total, item) => total + item.price, 0);
+  console.log(totalPrice);
   const handleDelete = (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -47,7 +49,15 @@ const UserCart = () => {
         <div className="flex justify-between">
           <Header main="Total orders" value={cart.length}></Header>
           <Header main="Total Price" value={`$${totalPrice}`}></Header>
-          <button className="btn btn-success">Pay</button>
+          {cart.length ? (
+            <Link to="/dashboard/payment">
+              <button className="btn btn-success">Pay</button>
+            </Link>
+          ) : (
+            <button disabled className="btn btn-success">
+              Pay
+            </button>
+          )}
         </div>
         {/* ______________________________table ________________ */}
         <div className="overflow-x-auto mt-5">

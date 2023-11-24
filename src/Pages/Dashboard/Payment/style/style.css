@@ -1,0 +1,15 @@
+.CardElement {
+  font-size: 16px;
+  color: #424770;
+  border-radius: 8px;
+  border: 1px solid var(--Dark-06, #e8e8e8);
+  background: #fff;
+}
+
+.CardElement::placeholder {
+  color: #aab7c4;
+}
+
+.CardElement--invalid {
+  color: #9e2146;
+}
