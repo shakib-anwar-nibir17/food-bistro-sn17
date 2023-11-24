@@ -34,7 +34,7 @@ const DashboardMenuAdmin = () => {
       </li>
       <li>
         <NavLink
-          to="/menu"
+          to="/dashboard/manage_items"
           className={({ isActive }) => (isActive ? "text-white" : "")}
         >
           <p className="flex items-center gap-1">
