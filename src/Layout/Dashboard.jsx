@@ -1,6 +1,6 @@
 import { Outlet } from "react-router-dom";
 import DashBoardMenuUser from "../Pages/Dashboard/DashboardMenu/DashBoardMenuUser";
-import DashboardMenuAdmin from "../Pages/Dashboard/DashboardMenu/DashBoardMenuAdmin";
+import DashboardMenuAdmin from "../Pages/Dashboard/DashboardMenu/DashboardMenuAdmin";
 import useAdmin from "../Hooks/useAdmin";
 
 const Dashboard = () => {
