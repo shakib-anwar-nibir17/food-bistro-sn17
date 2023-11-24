@@ -3,9 +3,38 @@ import HelmetTitle from "../../../components/Helmet/HelmetTitle";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import Header from "../../../components/Header/Header";
 import useMenu from "../../../Hooks/useMenu";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 const ManageItems = () => {
-  const [menu] = useMenu();
+  const [menu, , refetch] = useMenu();
+  const axiosSecure = useAxiosSecure();
+  const handleDeleteItem = (item) => {
+    console.log(item._id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/menu/${item._id}`).then((res) => {
+          console.log(res.data);
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your item has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
   return (
     <div>
       <HelmetTitle title="Manage Items"></HelmetTitle>
@@ -51,7 +80,10 @@ const ManageItems = () => {
                     </button>
                   </td>
                   <td>
-                    <button className="btn bg-[#B91C1C] ">
+                    <button
+                      onClick={() => handleDeleteItem(item)}
+                      className="btn bg-[#B91C1C] "
+                    >
                       <FaTrashAlt className="text-white"></FaTrashAlt>
                     </button>
                   </td>
